@@ -10,6 +10,7 @@
 
 .divs {
   margin: auto;
+  display: 'flex';
   width: 60%;
   padding: 10px;
 }
@@ -32,13 +33,44 @@
   overflow: auto; /* Enable both x and y axis scrolling */
   max-height: 150px;
 }
-
 @media (max-width: 768px) {
+  /* Adjust the styles for screens smaller than 768px */
+
+  /* Header */
+  .header {
+    padding: 5px 0;
+  }
+
+  /* Flex Container */
+  .divs {
+    width: 100%; /* Take full width on smaller screens */
+    padding: 10px;
+  }
+
+  /* Flex Items */
   .flex-item {
-    flex-basis: 100%; /* Make each item take the full width of the container */
+    flex-basis: 100%; /* Take full width of the container */
     padding-right: 10px;
     padding-left: 10px;
     overflow-x: auto;
+  }
+
+  /* Main Content */
+  .main-content {
+    padding: 10px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 5px 0;
+  }
+
+  /* Scrollable Textarea */
+  .scrollable-textarea {
+    width: 100%; /* Take full width on smaller screens */
+    height: auto; /* Allow textarea to grow vertically */
+    max-height: none; /* Allow textarea to expand freely */
+    white-space: normal; /* Normal text wrapping */
   }
 }
 
@@ -51,6 +83,7 @@
 
 .layout {
   background: none;
+  flex: 1
 }
 .header {
   color: #a2a2a2;
