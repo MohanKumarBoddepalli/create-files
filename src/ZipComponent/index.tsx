@@ -26,38 +26,28 @@ const ZipDownloadComponent = () => {
     setName('');
   };
 
-  const replacePlaceholders = (template: string, data: { [key: string]: string }) => {
+  const replacePlaceholders = (template: string, data: { [key: string]: string }, i: number) => {
     return template.replace(/\${(.*?)}/g, (_, key) => data[key]);
   };
 
 
   const onFinish = (values: any) => {
-    const updatedValues = { ...values };
-
-    console.log('=====>values', values)
-
+    const updatedValues : any = {};
     for (let i = 0; i < textAreas.length; i++) {
-      updatedValues[textAreas[i]] = updatedValues.custom_input[textAreas[i]] !== '' ? updatedValues.custom_input[textAreas[i]].split('\n') : [];
+      updatedValues[textAreas[i]] = values[textAreas[i]] !== '' ? values[textAreas[i]].split('\n') : [];
     }
-    console.log(updatedValues);
-
-    handleDownload(updatedValues);
+    handleDownload(values, updatedValues);
   };
 
-  const handleDownload = (values: any) => {
+  const handleDownload = (values: any, updatedValues: any) => {
 
-    const count = values.noOfFiles || values[textAreas[0]]?.length || 1
+    const count = values.noOfFiles || updatedValues[textAreas[0]]?.length || 1
     const zip = new JSZip();
-    console.log(`======>`, values);
-    console.log('--->', textAreas)
     const x = values.ComponentValue;
     for (let i = 0; i < count; i++) {
 
       const fullNo = i + values.startingNo
-      const content = replacePlaceholders(values.key, {
-        datax1: values[textAreas[i]],
-        datax2: values[textAreas[i]]
-      });
+      const content = replacePlaceholders(values.componentValue, updatedValues, i);
       zip.file(`${values.foldername}${fullNo}.${values.filetype}`, content);
     }
 
@@ -179,7 +169,7 @@ const ZipDownloadComponent = () => {
             {textAreas.map((textArea, index) => (
               <div className='flex-item'>
                 <Form.Item key={index}
-                  name={["custom_input",`${textArea}`]}
+                  name={[`${textArea}`]}
                   label={textArea}>
                   <Input.TextArea
                     className="scrollable-textarea"
