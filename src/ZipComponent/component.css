@@ -48,3 +48,16 @@
   overflow: auto; /* Add both horizontal and vertical scroll if content overflows */
   white-space: pre; /* Preserve newlines and spaces */
 }
+
+.layout {
+  background: none;
+}
+.header {
+  color: #a2a2a2;
+  ;
+}
+
+.footer{
+  background: none;
+  color: #a2a2a2;
+}
