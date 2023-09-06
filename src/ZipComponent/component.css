@@ -1,0 +1,50 @@
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: #a2a2a2 !important;
+
+}
+
+.custom-tab {
+  height: fit-content;
+  color: #363636;
+}
+
+.divs {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.dynamic-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;  
+}
+
+.flex-item {
+  flex: 1; /* Distribute available space equally among items */
+  min-width: 200px; /* Set a minimum width for each item */
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: auto; /* Enable both x and y axis scrolling */
+  max-height: 150px;
+}
+
+@media (max-width: 768px) {
+  .flex-item {
+    flex-basis: 100%; /* Make each item take the full width of the container */
+    padding-right: 10px;
+    padding-left: 10px;
+    overflow-x: auto;
+  }
+}
+
+.scrollable-textarea {
+  width:'100%'; /* Set a fixed width for the textarea */
+  height: 150px; /* Set a fixed height for the textarea */
+  overflow: auto; /* Add both horizontal and vertical scroll if content overflows */
+  white-space: pre; /* Preserve newlines and spaces */
+}

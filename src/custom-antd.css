@@ -1,0 +1,8 @@
+.ant-btn {
+    color: #dcdcdc;
+}
+
+.ant-form-item-label >label {
+    font-weight: bold;
+    color: rgba(229, 227, 227, 0.88) !important;
+}
