@@ -27,7 +27,7 @@ const ZipDownloadComponent = () => {
   };
 
   const replacePlaceholders = (template: string, data: { [key: string]: string }, i: number) => {
-    return template.replace(/\${(.*?)}/g, (_, key) => data[key]);
+    return template.replace(/\${(.*?)}/g, (_, key) => data[key][i]);
   };
 
 
@@ -48,7 +48,7 @@ const ZipDownloadComponent = () => {
 
       const fullNo = i + values.startingNo
       const content = replacePlaceholders(values.componentValue, updatedValues, i);
-      zip.file(`${values.foldername}${fullNo}.${values.filetype}`, content);
+      zip.file(`${values.filename}${fullNo}.${values.filetype}`, content);
     }
 
     zip.generateAsync({ type: 'blob' }).then((content) => {
